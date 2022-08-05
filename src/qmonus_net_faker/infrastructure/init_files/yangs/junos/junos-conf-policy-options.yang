@@ -1,0 +1,89 @@
+module junos-conf-policy-options {
+    namespace "http://yang.juniper.net/junos/conf/policy-options";
+    prefix policy-options;
+
+    import junos-conf-root {
+        prefix root;
+    }
+
+    augment /root:configuration {
+        container policy-options {
+            list prefix-list {
+                key name;
+                leaf name {
+                    type string;
+                }
+                list prefix-list-item {
+                    key name;
+                    leaf name {
+                        type string;
+                    }
+                }
+            }
+            list policy-statement {
+                key name;
+                leaf name {
+                    type string;
+                }
+                list term {
+                    key name;
+                    leaf name {
+                        type string;
+                    }
+                    container from {
+                        leaf-list protocol {
+                            type string;
+                        }
+                        list prefix-list-filter {
+                            key "list_name choice-ident choice-value";
+                            leaf list_name {
+                                type string;
+                            }
+                            leaf choice-ident {
+                                type string;
+                            }
+                            leaf choice-value {
+                                type string;
+                            }
+                        }
+                    }
+                    container then {
+                        list community {
+                            key "choice-ident choice-value community-name";
+                            leaf choice-ident {
+                                type string;
+                            }
+                            leaf choice-value {
+                                type string;
+                            }
+                            leaf community-name {
+                                type string;
+                            }
+                        }
+                        choice action {
+                            case case_1 {
+                                leaf accept {
+                                    type empty;
+                                }
+                            }
+                            case case_2 {
+                                leaf reject {
+                                    type empty;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            list community {
+                key name;
+                leaf name {
+                    type string;
+                }
+                leaf-list members {
+                    type string;
+                }
+            }
+        }
+    }
+}

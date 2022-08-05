@@ -1,0 +1,11 @@
+*~
+*.pyc
+__pycache__/
+.venv/
+.pytest_cache/
+*.egg-info/
+
+poetry.lock
+
+.idea/
+.vscode/

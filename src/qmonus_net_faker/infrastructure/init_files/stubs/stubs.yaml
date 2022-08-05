@@ -1,0 +1,16 @@
+stubs:
+  - id: netfaker-stub-0
+    description: junos-0
+    handler: junos
+    yang: junos
+    enabled: true
+  - id: netfaker-stub-1
+    description: junos-1
+    handler: junos
+    yang: junos
+    enabled: true
+  - id: netfaker-stub-2
+    description: junos-2
+    handler: junos
+    yang: junos
+    enabled: true

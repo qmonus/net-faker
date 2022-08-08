@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 
 
 class Handler(object):
-    def __init__(self, stub_id: str, manager_endpoint: str):
+    def __init__(self, stub_id: str, manager_endpoint: str) -> None:
         self._stub_id = stub_id
         self._manager_endpoint = manager_endpoint.rstrip("/")
 
@@ -131,7 +131,7 @@ class Server(object):
         port: int,
         stub_id: str,
         manager_endpoint: str,
-    ):
+    ) -> None:
         if None in [host, port, stub_id, manager_endpoint]:
             raise ValueError("host, port, stub_id, and manager_endpoint must be set")
 

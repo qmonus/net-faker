@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 
 
 class Handler(object):
-    def __init__(self, stub_id: str, manager_endpoint: str):
+    def __init__(self, stub_id: str, manager_endpoint: str) -> None:
         self._stub_id = stub_id
         self._manager_endpoint = manager_endpoint.rstrip("/")
         self._session_count = 0

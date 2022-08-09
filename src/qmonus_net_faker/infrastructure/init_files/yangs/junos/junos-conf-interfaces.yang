@@ -1,0 +1,68 @@
+module junos-conf-interfaces {
+    namespace "http://yang.juniper.net/junos/conf/interfaces";
+    prefix interfaces;
+
+    import junos-conf-root {
+        prefix root;
+    }
+
+    augment /root:configuration {
+        container interfaces {
+            list interface {
+                key name;
+                leaf name {
+                    type string;
+                }
+                leaf description {
+                    type string;
+                }
+                choice vlan_tag_mode {
+                    case case_1 {
+                        leaf vlan-tagging {
+                            type empty;
+                        }
+                    }
+                    case case_2 {
+                        leaf flexible-vlan-tagging {
+                            type empty;
+                        }
+                    }
+                }
+                leaf encapsulation {
+                    type string;
+                }
+                list unit {
+                    key name;
+                    leaf name {
+                        type string;
+                    }
+                    leaf description {
+                        type string;
+                    }
+                    choice vlan_choice {
+                        case case_1 {
+                            leaf vlan-id {
+                                type string;
+                            }
+                        }
+                        case case_2 {
+                            leaf vlan-id-range {
+                                type string;
+                            }
+                        }
+                    }
+                    container family {
+                        container inet {
+                            list address {
+                                key name;
+                                leaf name {
+                                    type string;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

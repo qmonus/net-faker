@@ -1,0 +1,49 @@
+[tool.poetry]
+name = "qmonus-net-faker"
+version = "0.5.0"
+description = "Qmonus-NetFaker"
+authors = ["NTT Communications Corporation"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+aiohttp = "^3.8.1"
+pyang = "2.5.0"
+lxml = "^4.6.3"
+jinja2 = "^3.0.3"
+asyncssh = "^2.7.2"
+jsonschema = "^3.2.0"
+multidict = "^5.1.0"
+PyYaml = "^5.4.1"
+telnetlib3 = "^1.0.4"
+snmp-agent = "^0.2.3"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.5"
+ncclient = "^0.6.12"
+pytest-asyncio = "^0.16.0"
+pysnmp = "^4.4.12"
+types-PyYAML = "^6.0.10"
+mypy = "^0.971"
+black = "^22.6.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.mypy]
+files = ["src"]
+python_version = 3.9
+show_error_codes = true
+warn_unused_configs = true
+check_untyped_defs = true
+disallow_any_generics = true
+disallow_incomplete_defs = true
+disallow_untyped_calls = true
+disallow_untyped_decorators = true
+disallow_untyped_defs = true
+ignore_missing_imports = true
+implicit_reexport = false
+no_implicit_optional = true
+strict_concatenate = true
+strict_equality = true
+warn_return_any = true

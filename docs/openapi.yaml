@@ -1,0 +1,342 @@
+openapi: "3.1.0"
+info:
+  version: "0.5.0"
+  title: Qmonus-NetFaker
+  license:
+    identifier: MIT
+    name: MIT
+servers:
+  - url: https://netfaker-manager:10080
+paths:
+  /stubs:
+    get:
+      summary: List
+      operationId: ListStubs
+      tags:
+        - stubs
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        '200':
+          description: Array of the resources
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - stubs
+                properties:
+                  stubs:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Stub"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/Error"
+    post:
+      summary: Create
+      operationId: CreateStub
+      tags:
+        - stubs
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - stub
+              properties:
+                stub:
+                  type: object
+                  required:
+                    - id
+                    - handler
+                  properties:
+                    id:
+                      type: string
+                    description:
+                      type: string
+                    handler:
+                      type: string
+                    yang:
+                      type: string
+                    enabled:
+                      type: boolean
+                    metadata:
+                      type: object
+      responses:
+        '200':
+          description: resource
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - stub
+                properties:
+                  stub:
+                    allOf:
+                      - $ref: "#/components/schemas/Stub"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /stubs:reload:
+    post:
+      summary: Reload
+      operationId: ReloadStubs
+      tags:
+        - stubs
+      responses:
+        '200':
+          description: resource
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - stubs
+                properties:
+                  stubs:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Stub"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /stubs/{stubId}:
+    get:
+      summary: Get
+      operationId: GetStub
+      tags:
+        - stubs
+      parameters:
+        - name: stubId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: resource
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - stub
+                properties:
+                  stub:
+                    $ref: "#/components/schemas/Stub"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    patch:
+      summary: Update
+      operationId: UpdateStub
+      tags:
+        - stubs
+      parameters:
+        - name: stubId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - stub
+              properties:
+                stub:
+                  type: object
+                  properties:
+                    description:
+                      type: string
+                    handler:
+                      type: string
+                    yang:
+                      type: string
+                    enabled:
+                      type: boolean
+                    metadata:
+                      type: object
+      responses:
+        '200':
+          description: resource
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - stub
+                properties:
+                  stub:
+                    allOf:
+                      - $ref: "#/components/schemas/Stub"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    delete:
+      summary: Delete
+      operationId: DeleteStub
+      tags:
+        - stubs
+      parameters:
+        - name: stubId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: empty
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /yangs:
+    get:
+      summary: List
+      operationId: ListYangs
+      tags:
+        - yangs
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        '200':
+          description: Array of the resources
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - yangs
+                properties:
+                  yangs:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Yang"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/Error"
+  /yangs/{yangId}:
+    get:
+      summary: Get
+      operationId: GetYang
+      tags:
+        - yangs
+      parameters:
+        - name: yangId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: resource
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - yang
+                properties:
+                  yang:
+                    $ref: "#/components/schemas/Yang"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+components:
+  schemas:
+    Stub:
+      type: object
+      required:
+        - id
+        - description
+        - handler
+        - yang
+        - enabled
+        - candidateConfig
+        - runningConfig
+        - startupConfig
+        - metadata
+      properties:
+        id:
+          type: string
+        description:
+          type: string
+        handler:
+          type: string
+        yang:
+          type: string
+        enabled:
+          type: boolean
+        candidateConfig:
+          type: string
+        runningConfig:
+          type: string
+        startupConfig:
+          type: string
+        metadata:
+          type: object
+    Yang:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: string
+    Error:
+      type: object
+      required:
+        - errorCode
+        - errorMessage
+        - moreInfo
+      properties:
+        errorCode:
+          type: integer
+        errorMessage:
+          type: string
+        moreInfo:
+          type: string
+          nullable: true
+          example: null

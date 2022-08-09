@@ -1,0 +1,8 @@
+module junos-conf-root {
+    namespace "http://yang.juniper.net/junos/conf/root";
+    prefix root;
+
+    container configuration {
+        config true;
+    }
+}

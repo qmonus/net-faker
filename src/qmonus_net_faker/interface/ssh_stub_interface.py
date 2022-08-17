@@ -243,7 +243,9 @@ class Handler(object):
 
 
 class Server(object):
-    def __init__(self, host: str, port: int, stub_id: str, manager_endpoint: str) -> None:
+    def __init__(
+        self, host: str, port: int, stub_id: str, manager_endpoint: str
+    ) -> None:
         if None in [host, port, stub_id, manager_endpoint]:
             raise ValueError("host, port, stub_id, and manager_endpoint must be set")
 

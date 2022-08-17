@@ -15,7 +15,12 @@ logger = logging.getLogger(__name__)
 
 class Server(object):
     def __init__(
-        self, host: str, port: int, stub_id: str, manager_endpoint: str, ssl: bool,
+        self,
+        host: str,
+        port: int,
+        stub_id: str,
+        manager_endpoint: str,
+        ssl: bool,
     ) -> None:
         if None in [host, port, stub_id, manager_endpoint]:
             raise ValueError("host, port, stub_id, and manager_endpoint must be set")

@@ -3,8 +3,8 @@ import typing
 
 from . import exceptions
 from ..libs import (
-    xml_utils,
     str_utils,
+    xml_utils,
     yang,
 )
 from ..domain import (

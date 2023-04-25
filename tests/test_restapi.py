@@ -1,12 +1,13 @@
 import pathlib
 
 import pytest
+import pytest_asyncio
 from qmonus_net_faker import action, server
 
 from . import http_client
 
 
-@pytest.fixture(scope="function", autouse=True)
+@pytest_asyncio.fixture(scope="function", autouse=True)
 async def setup_function(project_path: pathlib.Path):
     await action.init(project_path=str(project_path))
     manager = await server.create_manager(
@@ -17,7 +18,7 @@ async def setup_function(project_path: pathlib.Path):
     await manager.stop()
 
 
-@pytest.fixture(scope="function")
+@pytest_asyncio.fixture(scope="function")
 async def initial_stubs():
     return [
         {
@@ -56,7 +57,7 @@ async def initial_stubs():
     ]
 
 
-@pytest.fixture(scope="function")
+@pytest_asyncio.fixture(scope="function")
 async def initial_yangs():
     return [
         {

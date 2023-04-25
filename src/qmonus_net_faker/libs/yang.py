@@ -78,7 +78,6 @@ class YangTreeBuilder(object):
         parent_yang_module: typing.Any,
         parent_schema_tree: typing.Any,
     ) -> None:
-
         root_yang_module = parent_yang_module.xpath("/*")[0]
         yang_module_name = root_yang_module.attrib["name"]
         yang_module_prefix = cls._get_module_prefix(root_yang_module)

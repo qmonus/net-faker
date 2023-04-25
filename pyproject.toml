@@ -17,14 +17,18 @@ PyYaml = "^5.4.1"
 telnetlib3 = "^1.0.4"
 snmp-agent = "^0.2.3"
 
-[tool.poetry.dev-dependencies]
-pytest = "^6.2.5"
+[tool.poetry.group.dev]
+optional = true
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.3.1"
 ncclient = "^0.6.12"
-pytest-asyncio = "^0.16.0"
+pytest-asyncio = "^0.21.0"
 pysnmp = "^4.4.12"
 types-PyYAML = "^6.0.10"
 mypy = "^0.971"
-black = "^22.6.0"
+black = "^23.3.0"
+pyasn1 = "<0.5.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

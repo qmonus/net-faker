@@ -7,6 +7,7 @@ import telnetlib
 import asyncssh.connection
 
 import pytest
+import pytest_asyncio
 from ncclient import manager
 import pysnmp.hlapi
 from qmonus_net_faker import action, server
@@ -43,7 +44,7 @@ STUBS = [
 ]
 
 
-@pytest.fixture(scope="function", autouse=True)
+@pytest_asyncio.fixture(scope="function", autouse=True)
 async def setup_function(project_path: pathlib.Path):
     await action.init(project_path=str(project_path))
     await action.build(project_path=str(project_path), yang_name="junos")

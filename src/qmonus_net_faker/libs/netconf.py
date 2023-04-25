@@ -20,7 +20,6 @@ class Netconf(object):
         running_config: typing.Any = None,
         startup_config: typing.Any = None,
     ) -> None:
-
         if candidate_config is None:
             _candidate_config = xml_utils.create(tag="root")
         else:

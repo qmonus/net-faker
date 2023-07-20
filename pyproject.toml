@@ -13,7 +13,7 @@ jinja2 = "^3.0.3"
 asyncssh = "^2.7.2"
 jsonschema = "^3.2.0"
 multidict = "^5.1.0"
-PyYaml = "^5.4.1"
+PyYaml = "^6.0.1"
 telnetlib3 = "^1.0.4"
 snmp-agent = "^0.2.3"
 

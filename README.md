@@ -15,8 +15,10 @@ Qmonus-NetFakerは、擬似ネットワーク装置を開発するためのPytho
 netconfについては、YANGファイルによりネットワーク装置のコンフィグモデルを定義できます。ただし、typeやnamespaceのチェックは行いません。本格的な試験を行う場合は実機をご利用ください。
 
 ## インストール
-```
-pip install git+https://github.com/qmonus/net-faker.git@main
+Python 10で動作します。
+
+```sh
+pip install git+https://github.com/qmonus/net-faker.git@${VERSION}
 ```
 
 ## アプリケーション構成
@@ -45,7 +47,7 @@ pip install git+https://github.com/qmonus/net-faker.git@main
 
 ### 実行例
 `initコマンド`で`project`を作成します。
-```
+```sh
 mkdir netfaker
 cd netfaker
 python -m qmonus_net_faker init .
@@ -55,7 +57,7 @@ python -m qmonus_net_faker init .
 
 Pluginを作成したら、`manager`と`stub`を起動します。`stub`は擬似したいネットワーク装置の数だけ起動する必要があります。
 
-```
+```sh
 # manager起動
 python -m qmonus_net_faker run manager .
 
@@ -63,7 +65,7 @@ python -m qmonus_net_faker run manager .
 ※managerはデフォルトでは0.0.0.0:10080でhttp接続を待ち受けます。
 ```
 
-```
+```sh
 # stub起動
 python -m qmonus_net_faker run stub netfaker-stub-0 http://127.0.0.1:10080
 
@@ -128,7 +130,7 @@ stubs:
 `{project_path}/yangs`配下に任意の名前のディレクトリ`{yang_name}`を作成し、その配下に`YANG file`を作成します。`YANG file`の拡張子は`.yang`にしてください。尚、Qmonus-NetFakerはlistやcontainer、leafなどのコンフィグの階層構造は認識しますが、厳密なtypeやnamespaceのチェックは行いません。
 
 `YANG file`を用意したら、`buildコマンド`を実行して`yang_tree`を生成します。
-```
+```sh
 python -m qmonus_net_faker build {project_path} {yang_name}
 ```
 
@@ -141,7 +143,7 @@ pythonのmoduleです。`{project_path}/handlers`配下に任意の名前のデ�
 
 ## CLI
 `init`
-```
+```sh
 python -m qmonus_net_faker init [options] {project_path}
 
 positional arguments:
@@ -152,7 +154,7 @@ optional arguments:
 ```
 
 `build`
-```
+```sh
 python -m qmonus_net_faker build [options] {project_path} {yang_name}
 
 positional arguments:
@@ -166,7 +168,7 @@ optional arguments:
 ```
 
 `run manager`
-```
+```sh
 python -m qmonus_net_faker run manager [options] {project_path}
 
 positional arguments:
@@ -187,7 +189,7 @@ optional arguments:
 ```
 
 `run stub`
-```
+```sh
 python -m qmonus_net_faker run stub [options] {stub_id} {manager_endpoint}
 
 positional arguments:

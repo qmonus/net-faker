@@ -233,9 +233,9 @@ class App(object):
             raise exceptions.NotFoundError(f"stub '{stub_id}' is not enabled.")
 
         netconf_service = netconf_service_domain.NetconfService(
-            session_id=request.netconf.session_id
-            if hasattr(request, "netconf")
-            else None,
+            session_id=(
+                request.netconf.session_id if hasattr(request, "netconf") else None
+            ),
             yang_tree_repo=self._yang_tree_repo,
         )
         snmp_service = snmp_service_domain.SNMPService()

@@ -738,7 +738,7 @@ class YangNode(object):
         if self._schema is None:
             return "/"
 
-        nodes = [self]
+        nodes: list[YangNode] = [self]
         node = self
         while True:
             parent_node = node.get_parent()

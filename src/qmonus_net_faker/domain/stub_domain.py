@@ -524,9 +524,9 @@ class Entity(object):
                                             "./*"
                                         )
                                         for child_target_config in child_target_configs:
-                                            child_target_config.attrib[
-                                                "_visible"
-                                            ] = "true"
+                                            child_target_config.attrib["_visible"] = (
+                                                "true"
+                                            )
 
                                     else:
                                         # non-key-nodes exist

@@ -49,7 +49,7 @@ class Request(object):
         url: str,
         path: str,
         query: dict[str, list[str]],
-        headers: multidict.CIMultiDictProxy[str],
+        headers: multidict.MultiMapping[str],
         body: str,
         stub_id: str,
     ) -> None:
@@ -209,9 +209,11 @@ class HttpRequest(object):
             {
                 "code": code,
                 "headers": dict(_headers),
-                "body": body
-                if (body is None or isinstance(body, str))
-                else xml_utils.to_string(body),
+                "body": (
+                    body
+                    if (body is None or isinstance(body, str))
+                    else xml_utils.to_string(body)
+                ),
             }
         )
 
@@ -254,9 +256,9 @@ class NetconfRequest(object):
         protocol_operation: str,
         message_id: str,
     ) -> None:
-        self.connection_status: typing.Literal[
-            "login", "established"
-        ] = connection_status
+        self.connection_status: typing.Literal["login", "established"] = (
+            connection_status
+        )
         self.username = username
         self.session_id = session_id
         self.protocol_operation = protocol_operation
@@ -324,9 +326,9 @@ class SSHRequest(object):
         prompt: str,
         state: dict[typing.Any, typing.Any],
     ) -> None:
-        self.connection_status: typing.Literal[
-            "login", "established"
-        ] = connection_status
+        self.connection_status: typing.Literal["login", "established"] = (
+            connection_status
+        )
         self.username = username
         self.session_id = session_id
         self.input = input
@@ -359,9 +361,9 @@ class TelnetRequest(object):
         prompt: str,
         state: dict[typing.Any, typing.Any],
     ) -> None:
-        self.connection_status: typing.Literal[
-            "login", "established"
-        ] = connection_status
+        self.connection_status: typing.Literal["login", "established"] = (
+            connection_status
+        )
         self.session_id = session_id
         self.input = input
         self.prompt = prompt

@@ -5,30 +5,29 @@ description = "Qmonus-NetFaker"
 authors = ["NTT Communications Corporation"]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.10"
 aiohttp = "^3.8.1"
-pyang = "2.5.0"
-lxml = "^4.6.3"
+pyang = "2.6.0"
+lxml = "^5.1.0"
 jinja2 = "^3.0.3"
 asyncssh = "^2.7.2"
-jsonschema = "^3.2.0"
-multidict = "^5.1.0"
+jsonschema = "^4.21.1"
+multidict = "^6.0.4"
 PyYaml = "^6.0.1"
-telnetlib3 = "^1.0.4"
+telnetlib3 = "^2.0.4"
 snmp-agent = "^0.2.3"
 
 [tool.poetry.group.dev]
 optional = true
 
 [tool.poetry.group.dev.dependencies]
-pytest = "^7.3.1"
-ncclient = "^0.6.12"
+pytest = "^8.0.0"
+ncclient = "^0.6.15"
 pytest-asyncio = "^0.21.0"
 pysnmp = "^4.4.12"
 types-PyYAML = "^6.0.10"
-mypy = "^0.971"
-black = "^23.3.0"
-pyasn1 = "<0.5.0"
+mypy = "^1.8.0"
+black = "^24.1.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
@@ -36,7 +35,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.mypy]
 files = ["src"]
-python_version = 3.9
+python_version = "3.10"
 show_error_codes = true
 warn_unused_configs = true
 check_untyped_defs = true
@@ -48,6 +47,6 @@ disallow_untyped_defs = true
 ignore_missing_imports = true
 implicit_reexport = false
 no_implicit_optional = true
-strict_concatenate = true
+extra_checks = true
 strict_equality = true
 warn_return_any = true

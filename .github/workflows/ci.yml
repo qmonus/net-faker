@@ -18,8 +18,8 @@ jobs:
       fail-fast: false
       matrix:
         python-version:
-          - '3.9'
           - '3.10'
+          - '3.11'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     permissions:
@@ -27,17 +27,21 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
       - name: Setup python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
           architecture: "x64"
+
       - name: Get python version
         run: |
           python -V
+
       - name: Install dependencies
         run: |
           curl -sSL https://install.python-poetry.org | python3 -
           poetry install --no-interaction --with dev
+
       - name: Run pytest
         run: poetry run pytest -v --tb=native

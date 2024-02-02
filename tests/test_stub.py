@@ -112,6 +112,7 @@ async def test_handles_netconf():
             port=STUB.ssh_port,
             hostkey_verify=False,
             device_params={"name": "junos"},
+            allow_agent=False,
         ) as m:  # type: ignore
             resp = m.lock(target="candidate")
 
@@ -300,6 +301,7 @@ async def test_handles_netconf():
             port=STUB.ssh_port,
             hostkey_verify=False,
             device_params={"name": "junos"},
+            allow_agent=False,
         ) as m:  # type: ignore
             resp = m.edit_config(
                 target="candidate",
@@ -309,7 +311,7 @@ async def test_handles_netconf():
                         <interfaces xmlns="http://yang.juniper.net/junos/conf/interfaces">
                             <interface>
                                 <name>xe-0/0/1</name>
-                                <flexible-vlan-tagging/>                        
+                                <flexible-vlan-tagging/>
                                 <unit>
                                     <name>10</name>
                                     <description>10</description>

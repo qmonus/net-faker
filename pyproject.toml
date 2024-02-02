@@ -28,6 +28,7 @@ pysnmp = "^4.4.12"
 types-PyYAML = "^6.0.10"
 mypy = "^1.8.0"
 black = "^24.1.1"
+tomli = "^2.0.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

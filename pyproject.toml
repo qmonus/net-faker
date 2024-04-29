@@ -23,7 +23,7 @@ optional = true
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.0.0"
 ncclient = "^0.6.15"
-pytest-asyncio = "^0.21.0"
+pytest-asyncio = "^0.23.6"
 pysnmp = "^4.4.12"
 types-PyYAML = "^6.0.10"
 mypy = "^1.8.0"
